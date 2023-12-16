@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
+
+
+#app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    width:100% !important;
+    height: 100% !important;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Montserrat', Helvetica, sans-serif !important;
+    top:0;
+    bottom:0;
+    position: absolute;
+
+}
+.navbar .dropdown-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+    background-color: var(--nav) !important;
+    color: var(--text_nav)!important;
+  }
+  .nav{
+    background-color: var(--nav) !important;
+    color: var(--text_nav)!important;
+    padding-left:  1rem;
+    padding-right: 1rem;
+}
+
+.navbar>ul>li>a{
+    color: var(--text_nav)!important;
+}
+.navbar>ul>li>a:hover:focus{
+    color: var(--text_nav)!important;
+    background-color: var(--nav) !important;
+}
+.navbar>a{
+    color: var(--text_nav)!important;
+}
+.navbar>a:hover:focus{
+    color: var(--text_nav)!important;
+    background-color: var(--nav) !important;
+}
+.navbar>ul>li>.dropdown-menu>a{
+    color: var(--text_nav)!important;
+    background-color: var(--nav) !important;
+}
+.navbar>ul>li>.dropdown-menu>a:hover:focus{
+    color: var(--text_nav)!important;
+    background-color: var(--nav) !important;
+}
