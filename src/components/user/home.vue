@@ -50,9 +50,11 @@ export default {
       } else {
         const moment = require('moment')
         moment.locale('es')
-        this.auctions = json.content.auctions.sort(function (a, b) {
-          return moment(a.dateStart, 'DD/MM/YYYYTHH:mm:ssZZ') - moment(b.dateStart, 'DD/MM/YYYYTHH:mm:ssZZ')
-        })
+        if (json.content.auction) {
+          this.auctions = json.content.auctions.sort(function (a, b) {
+            return moment(a.dateStart, 'DD/MM/YYYYTHH:mm:ssZZ') - moment(b.dateStart, 'DD/MM/YYYYTHH:mm:ssZZ')
+          })
+        }
       }
       this.$store.state.isLoading = false
     }
