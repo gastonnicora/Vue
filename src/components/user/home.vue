@@ -6,7 +6,7 @@
                       <p tabindex="0" role="presentation">Remates:</p>
                       <hr>
                       <ul>
-                          <div v-if="auctions.length==0" tabindex="0" role="presentation">No hay remates</div>
+                          <div v-if="!auctions || auctions.length==0" tabindex="0" role="presentation">No hay remates</div>
                           <div v-else>
                             <div v-for="(auc, index) in auctions" :key="index">
                                 <div>
