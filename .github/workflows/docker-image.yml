@@ -20,7 +20,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: gastonnicora/deu_web
+          images: gastonnicora/vue
       
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
@@ -29,7 +29,7 @@ jobs:
           context: .
           file: ./Dockerfile
           tags: |
-            gastonnicora/deu_web:latest 
+            gastonnicora/vue:latest 
 
 
    
