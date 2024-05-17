@@ -1,0 +1,14 @@
+.marco{
+    border-color: var(--text_nav) ;
+    border: solid;
+    border-radius: 12px;
+    border-width: thin;
+    color: black !important;
+    text-decoration: none !important;
+    list-style: none !important;
+    
+}
+.nolink{
+    color: black !important;
+    text-decoration: none;
+}

@@ -1,0 +1,33 @@
+.links{
+    background-color: var(--nav) !important;
+    color: var(--text_nav)!important;
+  }
+.ul-nombre{
+    padding-left: 0;
+}
+
+.ul-link{
+    padding-left: 1rem;
+}
+li {
+    list-style-type: none;
+}
+.router{
+    color: var(--text_nav) !important;
+  background-color: var(--nav) !important;
+  text-decoration:none !important;
+}
+.ul-nombre>li, .ul-link>li{
+    margin-bottom: 1rem;
+}
+@media (min-width:801px)  {
+    .ul-nombre{
+      top: 0;
+      bottom: 0;
+      max-height:100%;
+      position: sticky;
+    }
+}
+.row{
+    height: 100%;
+}

@@ -1,0 +1,36 @@
+.navbar .dropdown-menu {
+    position: absolute !important;
+    right: 0;
+    left: auto !important;
+    background: var(--nav) !important;
+    color: var(--text_nav) !important;
+  }
+  .nav{
+    background-color: var(--nav) !important;
+    color: var(--text_nav)!important;
+    padding-left:  1rem;
+    padding-right: 1rem;
+}
+
+.navbar>ul>li>a{
+    color: var(--text_nav)!important;
+}
+.navbar>ul>li>a:hover:focus{
+    color: var(--text_nav)!important;
+    background-color: var(--nav) !important;
+}
+.navbar>a{
+    color: var(--text_nav)!important;
+}
+.navbar>a:hover:focus{
+    color: var(--text_nav)!important;
+    background-color: var(--nav) !important;
+}
+.navbar>ul>li>.dropdown-menu>a{
+    color: var(--text_nav)!important;
+    background-color: var(--nav) !important;
+}
+.navbar>ul>li>.dropdown-menu>a:hover:focus{
+    color: var(--text_nav)!important;
+    background-color: var(--nav) !important;
+}

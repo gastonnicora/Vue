@@ -1,0 +1,12 @@
+.footer{
+    position: absolute !important;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: var(--nav) !important;
+    color: var(--text_nav)!important;
+    padding-left:  1rem;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
