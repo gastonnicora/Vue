@@ -15,7 +15,9 @@ export async function get (url, method, token) {
         'x-access-tokens': token
       }
     })
+    console.log(url)
     const json = await response.json()
+    console.log(json)
     return json
   } catch (error) {
     console.log('Error Fetching data ', error)
