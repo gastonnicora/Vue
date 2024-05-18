@@ -20,7 +20,3 @@ export const socket = io(URL, {
 socket.on('disconnect', () => {
   state.connected = false
 })
-
-socket.on('connect', () => {
-  state.connected = true
-})
