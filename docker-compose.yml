@@ -21,7 +21,7 @@ services:
       - api
 
   api:
-    image: gastonnicora/remates-python
+    build: .
     restart: always
     environment:
       DB_HOST: db:3306
