@@ -16,7 +16,7 @@ export async function get (url, method, token) {
       }
     })
     console.log(url)
-    const json = await response.json()
+    const json = await JSON.stringify(response.json())
     console.log(json)
     return json
   } catch (error) {
@@ -36,7 +36,7 @@ export async function post (url, method, token = null, data = null) {
       },
       body: data
     })
-    const json = await response.json()
+    const json = await JSON.stringify(response.json())
     return json
   } catch (error) {
     console.log('Error Fetching data ', error)
