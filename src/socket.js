@@ -10,13 +10,14 @@ let URL
 if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
   URL = 'http://localhost:4000/'
 } else {
-  URL = 'socket.io/'
+  URL = `${location.origin}/api/`
   console.log(URL)
 }
 
 export const socket = io(URL, {
   transports: ['websocket', 'polling']
 })
+console.log(socket)
 
 socket.on('disconnect', () => {
   state.connected = false
