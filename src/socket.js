@@ -10,7 +10,7 @@ let URL
 if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
   URL = 'http://localhost:4000/'
 } else {
-  URL = 'api'
+  URL = `${location.origin}/api`
 }
 
 export const socket = io(URL, {
@@ -19,4 +19,8 @@ export const socket = io(URL, {
 
 socket.on('disconnect', () => {
   state.connected = false
+})
+
+socket.on('connect', () => {
+  state.connected = true
 })
