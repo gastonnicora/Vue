@@ -25,8 +25,8 @@ export default {
   computed: {
     connected () {
       const user = this.$store.state.session
-      if (user !== null) {
-        socket.emit('coneccion',{ name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
+      if (user.uuid) {
+        socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
       }
       return state.connected
     }
@@ -35,9 +35,9 @@ export default {
     this.$store.commit('SET_CONNECTION')
     this.inicio()
     const user = this.$store.state.session
-    if (user !== null) {
+    if (user.uuid) {
       socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
-    } 
+    }
   },
   data () {
     return {
