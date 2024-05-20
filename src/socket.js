@@ -15,10 +15,7 @@ if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
 }
 
 export const socket = io(URL, {
-  transports: ['websocket', 'polling'],
-  reconnectionAttempts: 5, // Intentos de reconexión
-  reconnectionDelay: 1000, // Tiempo de espera entre intentos
-  timeout: 20000 // Timeout de conexión
+  transports: ['polling']
 })
 console.log(socket)
 
@@ -30,4 +27,8 @@ socket.on('disconnect', () => {
 socket.on('connect', () => {
   console.log('connect')
   console.log('conectado')
+})
+
+socket.on('reconnect_attempt', (attemptNumber) => {
+  console.log(`Intento de reconexión número: ${attemptNumber}`)
 })
