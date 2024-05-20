@@ -16,7 +16,7 @@ export default createStore({
       if (env === 'development') {
         conn = 'http://localhost:4000/'
       } else {
-        conn = 'api/'
+        conn = '/api/'
       }
       state.connection = conn
     }
