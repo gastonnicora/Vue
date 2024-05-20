@@ -2,7 +2,7 @@ let URL
 if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
   URL = 'http://localhost:4000'
 } else {
-  URL = '/api'
+  URL = `${location.origin}/api`
 }
 
 export async function get (url, method, token) {
