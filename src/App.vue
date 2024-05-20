@@ -26,7 +26,7 @@ export default {
     connected () {
       const user = this.$store.state.session
       if (user !== null) {
-        socket.emit('coneccion', user.uuid, () => {})
+        socket.emit('coneccion',{ name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
       }
       return state.connected
     }
@@ -37,9 +37,7 @@ export default {
     const user = this.$store.state.session
     if (user !== null) {
       socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
-    } else {
-      socket.emit('coneccion', {})
-    }
+    } 
   },
   data () {
     return {
