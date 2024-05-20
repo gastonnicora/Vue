@@ -14,9 +14,7 @@ if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
   console.log(URL)
 }
 
-export const socket = io(URL, {
-  transports: ['websocket', 'polling']
-})
+export const socket = io(URL)
 console.log(socket)
 
 socket.on('disconnect', () => {
