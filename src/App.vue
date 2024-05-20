@@ -68,6 +68,22 @@ export default {
     } else {
       console.log('No se ha iniciado sesión, no se puede establecer el listener del socket.')
     }
+  },
+  watch: {
+    '$store.state.session': {
+      handler () {
+        if (this.$store.state.session) {
+          socket.on('updateSession/' + this.$store.state.session.uuid, (data) => {
+            console.log(data.data)
+            this.$store.state.session = data.data
+            localStorage.setItem('sesion', JSON.stringify(data.data))
+          })
+        } else {
+          console.log('No se ha iniciado sesión, no se puede establecer el listener del socket.')
+        }
+      },
+      deep: true
+    }
   }
 
 }
