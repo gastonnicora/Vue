@@ -50,7 +50,7 @@ export default {
       } else {
         const moment = require('moment')
         moment.locale('es')
-        if (json.content.auction) {
+        if (json.content.auctions) {
           this.auctions = json.content.auctions.sort(function (a, b) {
             return moment(a.dateStart, 'DD/MM/YYYYTHH:mm:ssZZ') - moment(b.dateStart, 'DD/MM/YYYYTHH:mm:ssZZ')
           })
