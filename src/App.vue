@@ -35,7 +35,6 @@ export default {
     this.$store.commit('SET_CONNECTION')
     this.inicio()
     const user = this.$store.state.session
-
     socket.disconnect()
     socket.connect()
     socket.disconnect()
@@ -68,7 +67,6 @@ export default {
     }
   },
   mounted () {
-
     console.log('con session')
     if (this.$store.state.session) {
       socket.on('updateSession/' + this.$store.state.session.uuid, (data) => {
