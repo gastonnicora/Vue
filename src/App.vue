@@ -35,6 +35,17 @@ export default {
     this.$store.commit('SET_CONNECTION')
     this.inicio()
     const user = this.$store.state.session
+
+    socket.disconnect()
+    socket.connect()
+    socket.disconnect()
+    socket.connect()
+    socket.disconnect()
+    socket.connect()
+    socket.disconnect()
+    socket.connect()
+    socket.disconnect()
+    socket.connect()
     if (user && user.uuid) {
       socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
     }
@@ -57,8 +68,9 @@ export default {
     }
   },
   mounted () {
+
+    console.log('con session')
     if (this.$store.state.session) {
-      console.log('con session')
       socket.on('updateSession/' + this.$store.state.session.uuid, (data) => {
         console.log(data.data)
         this.$store.state.session = data.data
