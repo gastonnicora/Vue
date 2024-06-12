@@ -59,15 +59,11 @@ export default {
   },
   mounted () {
     console.log('con session')
-    if (this.$store.state.session) {
-      socket.on('updateSession/' + this.$store.state.session.uuid, (data) => {
-        console.log(data.data)
-        this.$store.state.session = data.data
-        localStorage.setItem('sesion', JSON.stringify(data.data))
-      })
-    } else {
-      console.log('No se ha iniciado sesión, no se puede establecer el listener del socket.')
-    }
+    socket.on('updateSession', (data) => {
+      console.log(data.data)
+      this.$store.state.session = data.data
+      localStorage.setItem('sesion', JSON.stringify(data.data))
+    })
   }
 
 }
