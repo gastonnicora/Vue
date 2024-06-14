@@ -6,6 +6,7 @@
       Direccion: {{ auction.dataCompany.addres }}<br></div>
       {{ auction.description }} <br>
       Comienzo: {{ time(auction.dateStart) }} <br>
+      <div v-if="auction.type==0">Finaliza: {{ time(auction.dateFinish) }}</div>
       <div v-if="this.now > 0 && auction.finished!=1"> Comenzó {{ fromNow }}</div>
       <div v-if="this.now < 0 && auction.finished!=1"> Empieza {{ fromNow }}</div>
       <div v-if="auction.finished==1"> Finalizo </div>

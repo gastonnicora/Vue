@@ -87,6 +87,7 @@ export default {
       })
       socket.on('countdown/' + uuid, (room) => {
         this.timeOfEnd = room.time
+        console.log('time' + this.timeOfEnd)
         if (room.time === 0 && this.article.next) {
           this.changeUrl(this.article.next)
         }
