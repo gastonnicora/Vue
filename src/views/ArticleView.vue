@@ -91,8 +91,6 @@ export default {
         console.log('countdown')
         this.timeOfEnd = room.time
         if (room.time === 0 && this.article.next) {
-          this.leaveRoom()
-          console.log('leaveRoom')
           this.changeUrl(this.article.next)
         }
       })
@@ -103,12 +101,21 @@ export default {
       socket.on('finishRoom/' + uuid, (room) => {
         console.log('finishRoom')
         this.article.finished = 1
+        if (this.article.next) {
+          this.changeUrl(this.article.next)
+        }
       })
     }
   },
   mounted () {
     this.getArticle(this.$route.params.uuid)
     this.socket(this.$route.params.uuid)
+
+    window.addEventListener('beforeunload', this.leaveRoom)
+  },
+  beforeUnmount () {
+    this.leaveRoom()
+    window.removeEventListener('beforeunload', this.leaveRoom)
   },
   beforeRouteLeave (to, from, next) {
     window.removeEventListener('beforeunload', this.leaveRoom)
@@ -118,6 +125,8 @@ export default {
   beforeRouteUpdate (to, from, next) {
     window.removeEventListener('beforeunload', this.leaveRoom)
     console.log('route update')
+    this.leaveRoom()
+    console.log('leaveRoom')
     this.getArticle(to.params.uuid)
     console.log('getArticle')
     this.socket(to.params.uuid)
