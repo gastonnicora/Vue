@@ -60,10 +60,10 @@ export default {
       this.$store.state.token = JSON.parse(localStorage.getItem('token'))
     },
     connect () {
-      socket.connect();
+      socket.connect()
     },
     disconnect () {
-      socket.disconnect();
+      socket.disconnect()
     }
 
   },
