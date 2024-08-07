@@ -1,6 +1,6 @@
 <template>
   <navbar></navbar>
-  <p>State: {{ state.connected}}</p>
+  <p>State: {{ con }}</p>
   <button @click="connect()">Connect</button>
   <button @click="disconnect()">Disconnect</button>
   <div class="body"><router-view /></div>
@@ -32,6 +32,9 @@ export default {
         socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
         console.log('coneccion exitosa')
       }
+      return state.connected
+    },
+    con () {
       return state.connected
     }
   },
