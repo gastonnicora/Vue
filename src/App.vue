@@ -1,5 +1,8 @@
 <template>
   <navbar></navbar>
+  <p>State: {{ connected}}</p>
+  <button @click="connect()">Connect</button>
+  <button @click="disconnect()">Disconnect</button>
   <div class="body"><router-view /></div>
   <loading
     v-model:active="this.$store.state.isLoading"
@@ -55,7 +58,14 @@ export default {
     inicio () {
       this.$store.state.session = JSON.parse(localStorage.getItem('sesion'))
       this.$store.state.token = JSON.parse(localStorage.getItem('token'))
+    },
+    connect() {
+      socket.connect();
+    },
+    disconnect() {
+      socket.disconnect();
     }
+
   },
   mounted () {
     console.log('con session')

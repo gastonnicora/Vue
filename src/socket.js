@@ -32,6 +32,7 @@ socket.on('disconnect', () => {
 socket.on('connect', () => {
   console.log('connect')
   console.log('conectado')
+  state.connected = true
 })
 
 socket.on('reconnect_attempt', (attemptNumber) => {
