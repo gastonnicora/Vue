@@ -59,10 +59,10 @@ export default {
       this.$store.state.session = JSON.parse(localStorage.getItem('sesion'))
       this.$store.state.token = JSON.parse(localStorage.getItem('token'))
     },
-    connect() {
+    connect () {
       socket.connect();
     },
-    disconnect() {
+    disconnect () {
       socket.disconnect();
     }
 
