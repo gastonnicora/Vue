@@ -1,6 +1,6 @@
 <template>
   <navbar></navbar>
-  <p>State: {{ connected}}</p>
+  <p>State: {{ state.connected}}</p>
   <button @click="connect()">Connect</button>
   <button @click="disconnect()">Disconnect</button>
   <div class="body"><router-view /></div>
