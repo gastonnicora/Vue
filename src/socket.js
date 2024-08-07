@@ -27,7 +27,7 @@ socket.on('disconnect', () => {
   state.connected = false
 })
 
-socket.on('connect', () => {
+io.on('connect', () => {
   console.log('connect')
   console.log('conectado')
 })
