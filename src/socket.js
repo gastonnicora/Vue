@@ -22,12 +22,14 @@ export var socket = io(URL, {
 })
 console.log(socket)
 
+socket.connect()
+
 socket.on('disconnect', () => {
   console.log('disconnect')
   state.connected = false
 })
 
-io.on('connect', () => {
+socket.on('connect', () => {
   console.log('connect')
   console.log('conectado')
 })
