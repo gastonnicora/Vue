@@ -40,11 +40,11 @@ export default {
   },
   async created () {
     this.$store.commit('SET_CONNECTION')
-    this.inicio()
-    const user = this.$store.state.session
-    if (user && user.uuid) {
-      socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
-    }
+    // this.inicio()
+    // const user = this.$store.state.session
+    // if (user && user.uuid) {
+    //   socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
+    // }
   },
   data () {
     return {
