@@ -13,7 +13,7 @@ if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
   URL = `${location.origin}/api/`
 }
 
-export var socket = io(URL, {
+export const socket = io(URL, {
   transports: ['polling'],
   reconnectionAttempts: 5, // Intentos de reconexión
   reconnectionDelay: 1000, // Tiempo de espera entre intent
