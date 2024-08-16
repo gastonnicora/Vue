@@ -14,7 +14,7 @@ if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
 }
 
 export const socket = io(URL, {
-  transports: ['websocket'], // Cambia a 'websocket' si es posible
+  transports: ['polling'],
   reconnectionAttempts: 5,
   reconnectionDelay: 1000,
   timeout: 20000
