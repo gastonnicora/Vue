@@ -11,7 +11,6 @@ if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
   URL = 'http://localhost:4000/'
 } else {
   URL = `${location.origin}/api/`
-  console.log(URL)
 }
 
 export var socket = io(URL, {
@@ -26,7 +25,7 @@ socket.on('disconnect', () => {
   state.connected = false
 })
 
-socket.on('connect', () => {
+socket.on('connect', (data) => {
   console.log('connect')
   console.log('conectado')
   state.connected = true
