@@ -9,8 +9,8 @@
     :can-cancel="false"
     :is-full-page="true"
     loader="bars"
-  />
-  <Footer></Footer> -->
+  />-->
+  <Footer></Footer>
 </template>
 <style>
 @import './assets/style.css';
