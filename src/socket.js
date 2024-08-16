@@ -20,9 +20,6 @@ export var socket = io(URL, {
   reconnectionDelay: 1000, // Tiempo de espera entre intent
   timeout: 20000 // Timeout de conexión
 })
-console.log(socket)
-
-socket.connect()
 
 socket.on('disconnect', () => {
   console.log('disconnect')
@@ -35,6 +32,6 @@ socket.on('connect', () => {
   state.connected = true
 })
 
-socket.on('reconnect_attempt', (attemptNumber) => {
-  console.log(`Intento de reconexión número: ${attemptNumber}`)
-})
+// socket.on('reconnect_attempt', (attemptNumber) => {
+//   console.log(`Intento de reconexión número: ${attemptNumber}`)
+// })
