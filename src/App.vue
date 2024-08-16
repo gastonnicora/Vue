@@ -52,7 +52,7 @@ export default {
     }
   },
   components: {
-    Loading,
+    // Loading,
     Navbar,
     Footer
   },
