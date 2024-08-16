@@ -69,7 +69,7 @@ export default {
       socket.disconnect()
     }
 
-  },
+  }
   // mounted () {
   //   console.log('con session')
   //   socket.on('updateSession', (data) => {
