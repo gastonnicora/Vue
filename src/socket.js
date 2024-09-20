@@ -14,10 +14,7 @@ if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
 }
 
 export const socket = io(URL, {
-  transports: ['polling'],
-  reconnectionAttempts: 5,
-  reconnectionDelay: 1000,
-  timeout: 20000
+  transports: ['polling']
 })
 
 socket.on('disconnect', () => {
