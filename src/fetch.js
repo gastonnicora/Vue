@@ -8,7 +8,7 @@ if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
 export async function get (url, method, token) {
   try {
     const response = await fetch(URL + url, {
-      method: method,
+      method,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export async function get (url, method, token) {
 export async function post (url, method, token = null, data = null) {
   try {
     const response = await fetch(URL + url, {
-      method: method,
+      method,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

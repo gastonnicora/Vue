@@ -73,6 +73,6 @@
 </style>
 <script>
 export default {
-  name: 'LinkComponent'
+  name: 'LinksComponent'
 }
 </script>

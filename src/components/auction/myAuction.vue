@@ -32,7 +32,7 @@
                         <div v-if="articles.length=== 0" tabindex="0" role="presentation">No hay articulos</div>
                         <div v-else class="contenedor">
                           <div  v-for="(ar, index) in articles" :key="index" class="article">
-                                  <Article  :article="ar" ></Article>
+                                  <Articles  :article="ar" ></Articles>
                           </div>
                       </div>
                  </div>
@@ -45,12 +45,12 @@
 @import '@/assets/auction.css';
 </style>
 <script>
-import Article from '@/components/article/article'
+import Articles from '@/components/article/article'
 import { get } from '@/fetch.js'
 export default {
   name: 'MyAuction',
   components: {
-    Article
+    Articles
   },
   data () {
     return {

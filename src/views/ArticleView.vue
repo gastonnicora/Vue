@@ -59,7 +59,7 @@ export default {
     },
     async postBid (value) {
       this.$store.state.isLoading = true
-      const body = JSON.stringify({ value: value, article: this.article.uuid })
+      const body = JSON.stringify({ value, article: this.article.uuid })
       const json = await post('/bidCreate', 'POST', this.$store.state.token, body)
       if (json.error) {
         this.error = json.error
@@ -75,7 +75,7 @@ export default {
       socket.off('countdown/' + this.$route.params.uuid)
     },
     changeUrl (uuid) {
-      this.$router.push({ name: 'article', params: { uuid: uuid } })
+      this.$router.push({ name: 'article', params: { uuid } })
     },
     socket (uuid) {
       socket.emit('join', { room: uuid })

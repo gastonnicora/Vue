@@ -15,7 +15,7 @@
       <CreateArticle v-if="this.$route.name == 'updateArticle'"></CreateArticle>
       <BidForAuction v-if="this.$route.name == 'bidForAuction'"></BidForAuction>
     </div>
-    <Link class="link col-md-3 order-md-1"></Link>
+    <Links class="link col-md-3 order-md-1"></Links>
   </div>
 </template>
 <style>
@@ -23,7 +23,7 @@
 </style>
 
 <script>
-import Link from '@/components/link.vue'
+import Links from '@/components/links.vue'
 import UpdatePass from '@/components/user/updatePass.vue'
 import UpdateUser from '@/components/user/updateUser.vue'
 import CreateCompany from '@/components/company/createCompany.vue'
@@ -37,7 +37,7 @@ import BidForAuction from '@/components/bid/bidForAuction.vue'
 export default {
   name: 'ConfigView',
   components: {
-    Link,
+    Links,
     UpdatePass,
     UpdateUser,
     CreateCompany,

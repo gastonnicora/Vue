@@ -45,7 +45,7 @@ export default {
       this.$store.state.isLoading = true
       const email = document.getElementById('email').value
       const pass = document.getElementById('pass').value
-      const body = JSON.stringify({ email: email, password: pass })
+      const body = JSON.stringify({ email, password: pass })
       const json = await post('/login', 'POST', null, body)
       if (json.error) {
         this.error = json.error

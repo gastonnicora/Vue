@@ -10,7 +10,7 @@
     :is-full-page="true"
     loader="bars"
   />-->
-  <Footer></Footer>
+  <Footers></Footers>
 </template>
 <style>
 @import './assets/style.css';
@@ -23,7 +23,7 @@
 
 import { state, socket } from '@/socket.js'
 import Navbar from '@/components/nav/navbar'
-import Footer from '@/components/nav/footer'
+import Footers from '@/components/nav/footer'
 export default {
   computed: {
     // connected () {
@@ -54,7 +54,7 @@ export default {
   components: {
     // Loading,
     Navbar,
-    Footer
+    Footers
   },
 
   methods: {
