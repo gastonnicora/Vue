@@ -50,6 +50,7 @@ export default {
     console.log(user && user.uuid)
     if (user && user.uuid) {
       socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
+      console.log('coneccion emit')
     }
   },
   data () {
