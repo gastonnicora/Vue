@@ -3,6 +3,7 @@
   <!-- <p>State: {{ con }}</p>
   <button @click="connect()">Connect</button>
   <button @click="disconnect()">Disconnect</button> -->
+  {{$store.state.session}}
   <div class="body"><router-view /></div>
   <loading
     v-model:active="this.$store.state.isLoading"
@@ -28,6 +29,7 @@ export default {
   computed: {
     connected () {
       const user = this.$store.state.session
+      console.log('intento de coneccion')
       if (user && user.uuid) {
         socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
         console.log('coneccion exitosa')
