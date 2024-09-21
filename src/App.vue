@@ -1,8 +1,8 @@
 <template>
   <navbar></navbar>
-  <!-- <p>State: {{ con }}</p>
+  <p>State: {{ con }}</p>
   <button @click="connect()">Connect</button>
-  <button @click="disconnect()">Disconnect</button> -->
+  <button @click="disconnect()">Disconnect</button>
   {{$store.state.session}}
   <div class="body"><router-view /></div>
   <loading
@@ -25,12 +25,12 @@ import 'vue-loading-overlay/dist/css/index.css'
 import { state, socket } from '@/socket.js'
 import Navbar from '@/components/nav/navbar'
 import Footers from '@/components/nav/footer'
-import { computed } from 'vue'
 export default {
   computed: {
     connected () {
       const user = this.$store.state.session
       console.log('intento de coneccion')
+      console.log(user && user.uuid)
       if (user && user.uuid) {
         socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
         console.log('coneccion exitosa')
@@ -45,6 +45,9 @@ export default {
     this.$store.commit('SET_CONNECTION')
     this.inicio()
     const user = this.$store.state.session
+
+    console.log('intento de coneccion')
+    console.log(user && user.uuid)
     if (user && user.uuid) {
       socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
     }
