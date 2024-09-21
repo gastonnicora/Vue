@@ -56,7 +56,12 @@ export default {
         localStorage.setItem('token', JSON.stringify(json.token))
         this.$store.state.token = json.token
         const user = this.$store.state.session
-        socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
+        socket.on('connect', () => {
+          if (user && user.uuid) {
+            socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
+            console.log('coneccion emitida tras conexión')
+          }
+        })
         this.$router.go(-1)
       }
       this.$store.state.isLoading = false

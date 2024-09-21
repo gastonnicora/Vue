@@ -28,10 +28,13 @@ export default {
       const user = this.$store.state.session
       console.log('intento de coneccion')
       console.log(user && user.uuid)
-      if (user && user.uuid) {
-        socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
-        console.log('coneccion exitosa')
-      }
+      socket.on('connect', () => {
+        const user = this.$store.state.session
+        if (user && user.uuid) {
+          socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
+          console.log('coneccion emitida tras conexión')
+        }
+      })
       return state.connected
     }
   },
