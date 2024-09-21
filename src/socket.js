@@ -14,9 +14,10 @@ if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
 }
 console.log(URL)
 export const socket = io(URL, {
-  transports: ['websocket', 'polling'],
-  pingTimeout: 60000, // Tiempo de espera
-  pingInterval: 25000 // Intervalo de PING
+  transports: ['polling'],
+  reconnectionAttempts: 5, // Intentos de reconexión
+  reconnectionDelay: 1000, // Tiempo de espera entre intentos
+  timeout: 20000 // Timeout de conexión
 })
 
 socket.on('connect', () => {
