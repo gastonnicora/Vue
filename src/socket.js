@@ -31,3 +31,11 @@ socket.on('connect', () => {
   state.connected = true
 })
 socket.on('error', (err) => console.log('Error:', err))
+
+socket.on('connect_error', (err) => {
+  console.error('Connect Error:', err)
+})
+
+socket.on('reconnect_attempt', (attempt) => {
+  console.log(`Reconnect Attempt: ${attempt}`)
+})
