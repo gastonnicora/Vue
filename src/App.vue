@@ -25,6 +25,7 @@ import 'vue-loading-overlay/dist/css/index.css'
 import { state, socket } from '@/socket.js'
 import Navbar from '@/components/nav/navbar'
 import Footers from '@/components/nav/footer'
+import { computed } from 'vue'
 export default {
   computed: {
     connected () {
