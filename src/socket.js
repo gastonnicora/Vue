@@ -20,10 +20,10 @@ export const socket = io(URL, {
 socket.on('connect', () => {
   console.log('conectado')
   state.connected = true
-  socket.on('disconnect', () => {
-    console.log('disconnect')
-    state.connected = false
-  })
+})
+socket.on('disconnect', () => {
+  console.log('disconnect')
+  state.connected = false
 })
 socket.on('error', (err) => console.log('Error:', err))
 

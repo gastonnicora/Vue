@@ -1,8 +1,5 @@
 <template>
   <navbar></navbar>
-  <p>State: {{ con }}</p>
-  <button @click="connect()">Connect</button>
-  <button @click="disconnect()">Disconnect</button>
   {{$store.state.session}}
   <div class="body"><router-view /></div>
   <loading
@@ -36,9 +33,6 @@ export default {
         console.log('coneccion exitosa')
       }
       return state.connected
-    },
-    con () {
-      return state.connected
     }
   },
   async created () {
@@ -68,12 +62,6 @@ export default {
     inicio () {
       this.$store.state.session = JSON.parse(localStorage.getItem('sesion'))
       this.$store.state.token = JSON.parse(localStorage.getItem('token'))
-    },
-    connect () {
-      socket.connect()
-    },
-    disconnect () {
-      socket.disconnect()
     }
 
   },
