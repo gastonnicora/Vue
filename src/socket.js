@@ -20,15 +20,13 @@ export const socket = io(URL, {
   timeout: 20000 // Timeout de conexión
 })
 
-socket.on('disconnect', () => {
-  console.log('disconnect')
-  state.connected = false
-})
-
 socket.on('connect', () => {
-  console.log('connect')
   console.log('conectado')
   state.connected = true
+  socket.on('disconnect', () => {
+    console.log('disconnect')
+    state.connected = false
+  })
 })
 socket.on('error', (err) => console.log('Error:', err))
 
