@@ -35,18 +35,6 @@ export default {
       return state.connected
     }
   },
-  async created () {
-    this.$store.commit('SET_CONNECTION')
-    this.inicio()
-    const user = this.$store.state.session
-
-    console.log('intento de coneccion')
-    console.log(user && user.uuid)
-    if (user && user.uuid) {
-      socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
-      console.log('coneccion emit')
-    }
-  },
   data () {
     return {
       isLoading: this.$store.state.isLoading
@@ -67,6 +55,14 @@ export default {
   },
   mounted () {
     console.log('con session')
+    this.inicio()
+    socket.on('connect', () => {
+      const user = this.$store.state.session
+      if (user && user.uuid) {
+        socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
+        console.log('coneccion emitida tras conexión')
+      }
+    })
     socket.on('updateSession', (data) => {
       console.log(data.data)
       this.$store.state.session = data.data
