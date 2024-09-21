@@ -12,7 +12,7 @@ if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
 } else {
   URL = `${location.origin}/socket.io/`
 }
-
+console.log(URL)
 export const socket = io(URL, {
 })
 
