@@ -16,11 +16,11 @@
 
     <ul class="navbar-nav">
       <li>
-    <router-link class="navbar-brand" to="/" aria-label="ir a pagina principal"
-      >Inicio</router-link
-    >
-  </li>
-  </ul>
+        <router-link class="navbar-brand" to="/" aria-label="ir a pagina principal">
+          Inicio
+        </router-link>
+      </li>
+    </ul>
     <ul
       class="navbar-nav ml-auto list-group"
       style="right: 0; flex-direction: row"
@@ -29,6 +29,9 @@
       <RouterLink :to="'/start'" class="noLink" style="text-decoration: none"> Iniciar Sesión </RouterLink>
     </li>
       <li class="nav-item dropdown " v-if="this.$store.state.session ">
+        <RouterLink class="noLink" style="text-decoration: none; margin-right: 1rem" :to="'/'">
+          <font-awesome-icon :icon="['fas', 'cart-shopping']" />
+        </RouterLink>
         <a
           role="button"
           tabindex="0"

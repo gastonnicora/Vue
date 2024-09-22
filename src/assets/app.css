@@ -35,3 +35,24 @@
   max-width: 5rem;
   height: auto;
 }
+copy{
+  border-color: var(--text_nav) ;
+  border: solid;
+  border-radius: 6px;
+  border-width: thin;
+  padding-right: 1.3rem;
+  background-color: aliceblue;
+}
+.icon-copy{
+  position: absolute;
+  right: 4px;
+  top: 3px;
+  color: var(--text);
+}
+.li-copy{
+  position: relative;
+  width: min-content;
+
+  margin: auto;
+  cursor: copy;
+}
