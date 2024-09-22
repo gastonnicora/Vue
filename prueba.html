@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Socket.IO</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <style>
+        ul { list-style-type: none; }
+        li { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>Chat en Tiempo Real</h1>
+    <input type="text" id="messageInput" placeholder="Escribe un mensaje...">
+    <button id="sendButton">Enviar</button>
+    <ul id="messagesList"></ul>
+
+    <script>
+        let URL= 'http://localhost:4000'
+        
+        console.log(URL)
+        const socket = io(URL, {
+        transports: ['polling'],
+        reconnectionAttempts: 5, // Intentos de reconexión
+        reconnectionDelay: 1000, // Tiempo de espera entre intentos
+        timeout: 20000 // Timeout de conexión
+        })
+        socket.on('connect', () => {
+        console.log('conectado')
+        })
+        socket.on('disconnect', () => {
+        console.log('disconnect')
+        })
+        socket.on('error', (err) => console.log('Error:', err))
+
+        socket.on('connect_error', (err) => {
+        console.error('Connect Error:', err)
+        })
+
+        socket.on('reconnect_attempt', (attempt) => {
+        console.log(`Reconnect Attempt: ${attempt}`)
+        })
+    </script>
+</body>
+</html>
