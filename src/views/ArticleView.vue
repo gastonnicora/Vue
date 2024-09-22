@@ -2,7 +2,6 @@
    <router-link v-if="this.article.auction" :to="'/auction/'+this.article.auction" class="btn  btn-link" style="display:table" >
     <font-awesome-icon :icon="['fas', 'arrow-left']" /> Volver al remate
     </router-link>
-  <p>Usuarios conectados:{{  users.length }}</p>
 
   <img class="imgArticle" :src="article.urlPhoto" :alt="article.description"><br>
   {{ article.description }} <br>

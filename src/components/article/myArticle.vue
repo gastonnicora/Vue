@@ -10,7 +10,6 @@
       <font-awesome-icon :icon="['fas', 'trash-can']" />
     </button>
   </div>
-  <p>Usuarios conectados:{{  users.length }}</p>
   <img class="imgArticle" :src="article.urlPhoto" :alt="article.description"><br>
   {{ article.description }} <br>
   <div v-if="article.type==0"> Comienza: {{time(article.dateOfStart)}} </div>
