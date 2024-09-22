@@ -44,8 +44,10 @@ export default {
     async iniciarSesion () {
       this.$store.state.isLoading = true
       const email = document.getElementById('email').value
+      console.log(email)
       const pass = document.getElementById('pass').value
       const body = JSON.stringify({ email, password: pass })
+      console.log(body)
       const json = await post('/login', 'POST', null, body)
       if (json.error) {
         this.error = json.error
