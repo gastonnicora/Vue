@@ -1,9 +1,6 @@
 <template>
   <navbar></navbar>
-  <!-- <div class="body"><router-view /></div> -->
-  {{state1}}
-  <button @click="connect">Conectar</button>
-  <button @click="disconnect">desconectar</button>
+  <div class="body"><router-view /></div>
   <loading
     v-model:active="this.$store.state.isLoading"
     :can-cancel="false"
@@ -25,21 +22,21 @@ import { state, socket } from '@/socket.js'
 import Navbar from '@/components/nav/navbar'
 import Footers from '@/components/nav/footer'
 export default {
-  // computed: {
-  //   connected () {
-  //     const user = this.$store.state.session
-  //     console.log('intento de coneccion')
-  //     console.log(user && user.uuid)
-  //     socket.on('connect', () => {
-  //       const user = this.$store.state.session
-  //       if (user && user.uuid) {
-  //         socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
-  //         console.log('coneccion emitida tras conexión')
-  //       }
-  //     })
-  //     return state.connected
-  //   }
-  // },
+  computed: {
+    connected () {
+      const user = this.$store.state.session
+      console.log('intento de coneccion')
+      console.log(user && user.uuid)
+      socket.on('connect', () => {
+        const user = this.$store.state.session
+        if (user && user.uuid) {
+          socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
+          console.log('coneccion emitida tras conexión')
+        }
+      })
+      return state.connected
+    }
+  },
   data () {
     return {
       isLoading: this.$store.state.isLoading,
@@ -57,31 +54,24 @@ export default {
     inicio () {
       this.$store.state.session = JSON.parse(localStorage.getItem('sesion'))
       this.$store.state.token = JSON.parse(localStorage.getItem('token'))
-    },
-    connect () {
-      socket.connect()
-    },
-    disconnet () {
-      socket.disconnect()()
     }
-
+  },
+  mounted () {
+    console.log('con session')
+    this.inicio()
+    socket.on('connect', () => {
+      const user = this.$store.state.session
+      if (user && user.uuid) {
+        socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
+        console.log('coneccion emitida tras conexión')
+      }
+    })
+    socket.on('updateSession', (data) => {
+      console.log(data.data)
+      this.$store.state.session = data.data
+      localStorage.setItem('sesion', JSON.stringify(data.data))
+    })
   }
-  // mounted () {
-  //   console.log('con session')
-  //   this.inicio()
-  //   socket.on('connect', () => {
-  //     const user = this.$store.state.session
-  //     if (user && user.uuid) {
-  //       socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
-  //       console.log('coneccion emitida tras conexión')
-  //     }
-  //   })
-  //   socket.on('updateSession', (data) => {
-  //     console.log(data.data)
-  //     this.$store.state.session = data.data
-  //     localStorage.setItem('sesion', JSON.stringify(data.data))
-  //   })
-  // }
 
 }
 </script>
