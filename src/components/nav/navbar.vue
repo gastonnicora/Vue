@@ -31,10 +31,11 @@
         </RouterLink>
       <RouterLink :to="'/start'" class="noLink" style="text-decoration: none"> Iniciar Sesión </RouterLink>
     </li>
-      <li class="nav-item dropdown " v-if="this.$store.state.session ">
-        <RouterLink class="noLink" style="text-decoration: none; margin-right: 1rem" :to="'/'">
+    <li class="nav-item"><RouterLink class="noLink" style="text-decoration: none; margin-right: 1rem" :to="'/'">
           <font-awesome-icon :icon="['fas', 'cart-shopping']" />
-        </RouterLink>
+        </RouterLink></li>
+      <li class="nav-item dropdown " v-if="this.$store.state.session ">
+
         <a
           role="button"
           tabindex="0"
