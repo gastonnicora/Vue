@@ -8,6 +8,13 @@
       </div>
     </div>
   </RouterLink>
+  <RouterLink v-if="this.$route.path == '/myArticlesBought'" :to="'/myArticle/' + article.uuid" class="noLink" style="text-decoration: none">
+    <div class="marco">
+      <div class="center">
+        <img class="imgAuction" :src="article.urlPhoto" :alt="article.description">
+      </div>
+    </div>
+  </RouterLink>
   <RouterLink v-else :to="'/article/' + article.uuid" class="noLink" style="text-decoration: none">
     <div class="marco">
       <div class="center">

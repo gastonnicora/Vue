@@ -5,6 +5,7 @@ import ArticleView from '../views/ArticleView.vue'
 import LoginView from '../views/user/LoginView.vue'
 import ConfigView from '../views/Config.vue'
 import ConfirmEmail from '../views/ConfirmEmail.vue'
+import MyArticlesBought from '../views/article/myArticlesBought.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/myAuction/:uuid/myArticle/:article',
     name: 'myArticle',
     component: ConfigView
+  },
+  {
+    path: '/myArticle/:uuid',
+    name: 'myArticleB',
+    component: ArticleView
   },
   {
     path: '/myAuction/:uuid/myArticle/:article/updateArticle',
@@ -101,6 +107,11 @@ const routes = [
     path: '/article/:uuid',
     name: 'article',
     component: ArticleView
+  },
+  {
+    path: '/myArticlesBought',
+    name: 'myArticlesBought',
+    component: MyArticlesBought
   },
   {
     path: '/about',

@@ -1,7 +1,8 @@
 <template>
-   <router-link v-if="this.article.auction" :to="'/auction/'+this.article.auction" class="btn  btn-link" style="display:table" >
+   <router-link v-if="this.article.auction && this.$route.name != 'myArticleB'" :to="'/auction/'+this.article.auction" class="btn  btn-link" style="display:table" >
     <font-awesome-icon :icon="['fas', 'arrow-left']" /> Volver al remate
     </router-link>
+    <br v-else>
 
   <img class="imgArticle" :src="article.urlPhoto" :alt="article.description"><br>
   {{ article.description }} <br>
@@ -19,8 +20,15 @@
  </div>
  <br/>
  <div>
- <button  class="btn btn-outline-primary button"  id="before" v-if="this.article.before" @click="changeUrl(article.before)"><font-awesome-icon :icon="['fas', 'chevron-left']" />Articulo anterior</button>
- <button class="btn btn-outline-primary button" id="next" v-if="this.article.next" @click="changeUrl(article.next)">Articulo siguiente<font-awesome-icon :icon="['fas', 'chevron-right']"/> </button>
+ <button  class="btn btn-outline-primary button"  id="before" v-if="this.article.before && this.$route.name != 'myArticleB'" @click="changeUrl(article.before)"><font-awesome-icon :icon="['fas', 'chevron-left']" />Articulo anterior</button>
+ <button   class="btn btn-outline-primary button" id="next" v-if="this.article.next && this.$route.name != 'myArticleB'" @click="changeUrl(article.next)">Articulo siguiente<font-awesome-icon :icon="['fas', 'chevron-right']"/> </button>
+ <div v-if="this.$route.name == 'myArticleB'">
+  <hr>
+  <h4>Datos de la empresa</h4>
+   <div v-if="auction.dataCompany" >Empresa: {{ auction.dataCompany.name }}<br>
+                    Direccion: {{ auction.dataCompany.address }}<br>
+    </div>
+ </div>
 </div>
 </template>
 <style>
@@ -37,7 +45,8 @@ export default {
       article: {},
       error: '',
       users: [],
-      timeOfEnd: 0
+      timeOfEnd: 0,
+      auction: {}
     }
   },
   methods: {
@@ -53,6 +62,9 @@ export default {
         this.error = json.error
       } else {
         this.article = json.content
+        if (this.$route.name === 'myArticleB') {
+          this.getAuction()
+        }
       }
       this.$store.state.isLoading = false
     },
@@ -104,6 +116,17 @@ export default {
           this.changeUrl(this.article.next)
         }
       })
+    },
+
+    async getAuction () {
+      this.$store.state.isLoading = true
+      const json = await get('/auction/' + this.article.auction, 'GET', this.$store.state.token)
+      if (json.error) {
+        this.error = json.error
+      } else {
+        this.auction = json.content
+      }
+      this.$store.state.isLoading = false
     }
   },
   mounted () {
