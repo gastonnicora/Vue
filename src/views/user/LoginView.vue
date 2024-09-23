@@ -39,8 +39,8 @@ export default {
     copy (id) {
       const copyText = document.getElementById(id + 'c')
       const pasteText = document.getElementById(id)
-      const icon = document.getElementById('icon_' + id)
-      const check = document.getElementById('check_' + id)
+      const icon = document.getElementById('icon_' + id + 'c')
+      const check = document.getElementById('check_' + id + 'c')
       icon.style.display = 'none'
       check.style.display = 'block'
       pasteText.value = copyText.innerHTML
