@@ -42,6 +42,17 @@ export default {
       const check = document.getElementById('check_' + id)
       icon.style.display = 'none'
       check.style.display = 'block'
+      if (navigator.clipboard && copyText) {
+        navigator.clipboard.writeText(copyText.innerHTML)
+          .then(() => {
+            console.log('Texto copiado al portapapeles')
+          })
+          .catch(err => {
+            console.error('Error al copiar: ', err)
+          })
+      } else {
+        console.error('Clipboard API no está disponible')
+      }
       navigator.clipboard.writeText(copyText.innerHTML)
 
       setTimeout(() => {
