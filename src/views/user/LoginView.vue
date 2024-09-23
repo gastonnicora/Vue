@@ -43,8 +43,9 @@ export default {
       const check = document.getElementById('check_' + id + 'c')
       icon.style.display = 'none'
       check.style.display = 'block'
-      pasteText.value = copyText.innerHTML
-
+      if (pasteText) {
+        pasteText.value = copyText.innerHTML
+      }
       setTimeout(() => {
         icon.style.display = 'block'
         check.style.display = 'none'
