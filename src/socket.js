@@ -11,7 +11,6 @@ if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
 } else {
   URL = `${location.origin}`
 }
-console.log(URL)
 const io = window.io
 
 export const socket = io(URL, {
@@ -22,12 +21,10 @@ export const socket = io(URL, {
 })
 
 socket.on('connect', () => {
-  console.log('Conectado')
   state.connected = true
 })
 
 socket.on('disconnect', () => {
-  console.log('Desconectado')
   state.connected = false
 })
 

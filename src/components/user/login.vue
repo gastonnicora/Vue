@@ -46,7 +46,6 @@ export default {
     async iniciarSesion () {
       this.$store.state.isLoading = true
       const body = JSON.stringify({ email: this.email, password: this.password })
-      console.log(body)
       const json = await post('/login', 'POST', null, body)
 
       if (json.error) {
@@ -62,7 +61,6 @@ export default {
         socket.on('connect', () => {
           if (user && user.uuid) {
             socket.emit('coneccion', { name: user.name, lastName: user.lastName, uuid: user.uuid, email: user.email })
-            console.log('coneccion emitida tras conexión')
           }
         })
         this.$router.go(-1)

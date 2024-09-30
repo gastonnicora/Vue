@@ -91,26 +91,21 @@ export default {
     socket (uuid) {
       socket.emit('join', { room: uuid })
       socket.on('joinToRoom/' + uuid, (room) => {
-        console.log('joinRoom')
         this.users = room.users
       })
       socket.on('bidRoom/' + uuid, (bid) => {
-        console.log('bidRoom')
         this.article.dataBid = bid
       })
       socket.on('countdown/' + uuid, (room) => {
-        console.log('countdown')
         this.timeOfEnd = room.time
         if (room.time === 0 && this.article.next) {
           this.changeUrl(this.article.next)
         }
       })
       socket.on('startRoom/' + uuid, (room) => {
-        console.log('startRoom')
         this.article.started = 1
       })
       socket.on('finishRoom/' + uuid, (room) => {
-        console.log('finishRoom')
         this.article.finished = 1
         if (this.article.next) {
           this.changeUrl(this.article.next)
@@ -146,14 +141,10 @@ export default {
   },
   beforeRouteUpdate (to, from, next) {
     window.removeEventListener('beforeunload', this.leaveRoom)
-    console.log('route update')
     this.leaveRoom()
-    console.log('leaveRoom')
     this.getArticle(to.params.uuid)
-    console.log('getArticle')
+    this.timeOfEnd = 0
     this.socket(to.params.uuid)
-    console.log('socket')
-    console.log('uuid' + to.params.uuid)
     next()
   }
 }

@@ -15,7 +15,6 @@ export async function get (url, method, token) {
         'x-access-tokens': token
       }
     })
-    console.log(URL + url)
     const json = await response.json()
     console.log(json)
     return json

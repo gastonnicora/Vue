@@ -75,8 +75,6 @@ export default {
       document.getElementById('birthdate').setAttribute('max', today)
       document.getElementById('birthdate').value = birthdate
       this.birthdate = birthdate
-      console.log(birthdate)
-      console.log(this.user)
     },
     date () {
       const moment = require('moment')
