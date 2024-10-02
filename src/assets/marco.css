@@ -6,7 +6,11 @@
     color: black !important;
     text-decoration: none !important;
     list-style: none !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
     
+}
+.marco:hover {
+    transform: scale(1.02); /* Aumentar ligeramente al pasar el ratón */
 }
 .nolink{
     color: black !important;

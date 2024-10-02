@@ -1,6 +1,6 @@
-.dataCompany{
-    font-size: .75rem;
-    margin-left:auto ;
+.dataCompany {
+    font-size: 0.85rem; /* Aumenta un poco el tamaño */
+    margin: 0.5rem 0; /* Añadir espacio vertical */
 }
 .center{
     justify-content: center;
@@ -10,33 +10,38 @@
     align-items: center;
     background-color: var(--text);
 }
-.started{
-    background-color: #3d3;
-    margin: auto auto auto auto ;
-    width: max-content !important;
+.started {
+    background-color: #3d3; /* Verde suave */
+    margin: 0.5rem; /* Añadir margen */
+    padding: 0.3rem 0.6rem; /* Añadir padding */
     border-radius: 12px;
     position: absolute; 
     top: 0; 
     right: 0;
+    color: white; /* Texto blanco para contraste */
 }
-.finished{
-    background-color: #d33;
-    margin: 4px 4px auto auto;
-    width: max-content !important;
+
+.finished {
+    background-color: #d33; /* Rojo suave */
+    margin: 0.5rem; /* Añadir margen */
+    padding: 0.3rem 0.6rem; /* Añadir padding */
     border-radius: 12px;
-    position: absolute;
+    position: absolute; 
     top: 0; 
     right: 0;
+    color: white; /* Texto blanco para contraste */
 }
+
 
 .contenedor{
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem; /* Espacio entre artículos */
 }
 .article{
     flex-grow: 1;
-    flex-basis: 12rem;
-    margin:0.1rem
+    flex-basis: 10rem;
+    margin:0.5rem;
 }
 
 .marco{

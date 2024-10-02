@@ -84,6 +84,8 @@ export default {
       socket.off('joinToRoom/' + this.$route.params.uuid)
       socket.off('bidRoom/' + this.$route.params.uuid)
       socket.off('countdown/' + this.$route.params.uuid)
+      socket.off('startRoom/' + this.$route.params.uuid)
+      socket.off('finishRoom/' + this.$route.params.uuid)
     },
     changeUrl (uuid) {
       this.$router.push({ name: 'article', params: { uuid } })
@@ -91,12 +93,14 @@ export default {
     socket (uuid) {
       socket.emit('join', { room: uuid })
       socket.on('joinToRoom/' + uuid, (room) => {
+        console.log(room)
         this.users = room.users
       })
       socket.on('bidRoom/' + uuid, (bid) => {
         this.article.dataBid = bid
       })
       socket.on('countdown/' + uuid, (room) => {
+        console.log(room.time)
         this.timeOfEnd = room.time
         if (room.time === 0 && this.article.next) {
           this.changeUrl(this.article.next)
@@ -142,9 +146,12 @@ export default {
   beforeRouteUpdate (to, from, next) {
     window.removeEventListener('beforeunload', this.leaveRoom)
     this.leaveRoom()
-    this.getArticle(to.params.uuid)
-    this.timeOfEnd = 0
-    this.socket(to.params.uuid)
+    console.log(to.name)
+    if (to.name === 'article' || to.name === 'myArticleB') {
+      this.getArticle(to.params.uuid)
+      this.timeOfEnd = 0
+      this.socket(to.params.uuid)
+    }
     next()
   }
 }

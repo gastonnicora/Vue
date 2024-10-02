@@ -29,6 +29,7 @@
 <script>
 import Articles from '@/components/article/article'
 import { get } from '@/fetch.js'
+import { socket } from '@/socket.js'
 export default {
   name: 'AuctionBasic',
   components: {
@@ -80,10 +81,33 @@ export default {
           }
         }
       }
+    },
+    startAll () {
+      for (let i = 0; i < this.articles.length; i++) {
+        this.article[i].started = 1
+      }
+    },
+    finishAll () {
+      for (let i = 0; i < this.articles.length; i++) {
+        this.article[i].started = 1
+      }
     }
   },
   mounted () {
     this.getAuction()
+    if (this.articles[0] && this.articles[0].type === 0) {
+      const uuid = this.articles[0].uuid
+      socket.emit('join', { room: uuid })
+      socket.on('finishRoom/' + uuid, (room) => {
+        this.art.finished = 1
+        this.finishAll()
+        this.leaveRoom()
+      })
+      socket.on('startRoom/' + uuid, (room) => {
+        this.art.started = 1
+        this.startAll()
+      })
+    }
   }
 }
 </script>
