@@ -67,6 +67,14 @@ export default {
         this.$router.go(-1)
       }
       this.$store.state.isLoading = false
+    },
+    handleCopy ({ id, value }) {
+      console.log('hola')
+      if (id === 'email') {
+        this.email = value
+      } else if (id === 'pass') {
+        this.password = value
+      }
     }
   }
 }

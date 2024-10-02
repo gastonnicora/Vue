@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="col-md-6">
-      <login v-if="this.$store.state.session == null && login" :login="l"  ></login>
+      <login ref="login" v-if="this.$store.state.session == null && login" :login="l"></login>
       <checkIn v-if="this.$store.state.session == null && !login" :login="l"  ></checkIn>
     </div>
   </div>
@@ -38,14 +38,12 @@ export default {
     },
     copy (id) {
       const copyText = document.getElementById(id + 'c')
-      const pasteText = document.getElementById(id)
       const icon = document.getElementById('icon_' + id + 'c')
       const check = document.getElementById('check_' + id + 'c')
       icon.style.display = 'none'
       check.style.display = 'block'
-      if (pasteText) {
-        pasteText.value = copyText.innerHTML
-      }
+      const value = copyText.innerHTML
+      this.$refs.login.handleCopy({ id, value })
       setTimeout(() => {
         icon.style.display = 'block'
         check.style.display = 'none'
