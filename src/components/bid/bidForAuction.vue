@@ -51,15 +51,18 @@ export default {
   data () {
     return {
       auction: {},
-      articles: []
+      articles: [],
+      error: ''
     }
   },
   methods: {
     async getAuction () {
       this.$store.state.isLoading = true
       const json = await get('/auction/' + this.$route.params.uuid, 'GET', this.$store.state.token)
+      this.error = json.error
       if (json.error) {
-        this.error = json.error
+        alert(json.error)
+        this.$router.go(-1)
       } else {
         this.auction = json.content
         if (this.auction.articles.articles) {
@@ -92,25 +95,6 @@ export default {
         } else {
           next = n
         }
-      }
-    },
-    today (dateStart) {
-      const moment = require('moment')
-      moment.locale('es')
-      return moment(dateStart, 'DD/MM/YYYYTHH:mm:ssZZ') > moment()
-    },
-    async delete () {
-      const aceptar = confirm('¿Estás seguro de que deseas eliminar este remate?')
-      if (aceptar) {
-        this.$store.state.isLoading = true
-        const json = await get('/auctionDelete/' + this.$route.params.uuid, 'DELETE', this.$store.state.token)
-        if (json.error) {
-          alert(json.error)
-        } else {
-          alert('Remate eliminado')
-          this.$router.push({ name: 'myAuctions' })
-        }
-        this.$store.state.isLoading = false
       }
     }
   },

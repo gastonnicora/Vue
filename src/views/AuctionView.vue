@@ -38,15 +38,18 @@ export default {
   data () {
     return {
       auction: {},
-      articles: []
+      articles: [],
+      error: null
     }
   },
   methods: {
     async getAuction () {
       this.$store.state.isLoading = true
       const json = await get('/auction/' + this.$route.params.uuid, 'GET', this.$store.state.token)
+      this.error = json.error
       if (json.error) {
-        this.error = json.error
+        alert(this.error)
+        this.$router.go(-1)
       } else {
         this.auction = json.content
         if (this.auction.articles.articles) {

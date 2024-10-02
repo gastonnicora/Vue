@@ -27,15 +27,19 @@ export default {
   },
   data () {
     return {
-      articles: []
+      articles: [],
+      error: null
     }
   },
   methods: {
     async getMyArticles () {
       this.$store.state.isLoading = true
       const json = await get('/myArticlesBought', 'GET', this.$store.state.token)
+
+      this.error = json.error
       if (json.error) {
-        this.error = json.error
+        alert(this.error)
+        this.$router.push({ name: 'home', params: {} })
       } else {
         this.articles = json.content.articles
       }

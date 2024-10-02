@@ -62,7 +62,8 @@ export default {
       this.$store.state.isLoading = true
       const json = await get('/article/' + uuid, 'GET', this.$store.state.token)
       if (json.error) {
-        this.error = json.error
+        alert(json.error)
+        this.$router.go(-1)
       } else {
         this.article = json.content
       }
@@ -73,6 +74,8 @@ export default {
       socket.off('joinToRoom/' + this.$route.params.article)
       socket.off('bidRoom/' + this.$route.params.article)
       socket.off('countdown/' + this.$route.params.article)
+      socket.off('startRoom/' + this.$route.params.uuid)
+      socket.off('finishRoom/' + this.$route.params.uuid)
     },
     changeUrl (uuid) {
       window.removeEventListener('beforeunload', this.leaveRoom)
@@ -135,8 +138,10 @@ export default {
   beforeRouteUpdate (to, from, next) {
     window.removeEventListener('beforeunload', this.leaveRoom)
     this.leaveRoom()
-    this.getArticle(to.params.article)
-    this.socket(to.params.article)
+    if (to.name === 'myArticle') {
+      this.getArticle(to.params.article)
+      this.socket(to.params.article)
+    }
     next()
   }
 }

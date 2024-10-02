@@ -35,7 +35,8 @@ export default {
       this.$store.state.isLoading = true
       const json = await get('/bidByArticle/' + this.article, 'GET', this.$store.state.token)
       if (json.error) {
-        this.error = json.error
+        alert(json.error)
+        this.$router.go(-1)
       } else {
         this.bids = json.content
       }

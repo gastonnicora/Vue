@@ -47,11 +47,10 @@ export default {
       this.$store.state.isLoading = true
       const body = JSON.stringify(this.user)
       const json = await post('/userUpdate', 'PUT', this.$store.state.token, body)
+      this.error = json.error
       if (json.error) {
-        this.error = json.error
         this.save = false
       } else {
-        this.error = []
         this.save = true
       }
       this.$store.state.isLoading = false

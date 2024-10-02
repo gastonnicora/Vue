@@ -22,6 +22,7 @@ export default {
       const json = await get('/confirmEmail/' + this.$route.params.uuid, 'GET', this.$store.state.token)
       if (json.error) {
         alert(json.error)
+        this.$router.push({ name: 'home', params: {} })
       }
       this.$store.state.isLoading = false
     }

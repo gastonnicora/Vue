@@ -15,6 +15,8 @@
   <p v-if="this.article.dataBid && this.article.dataBid.dataUser && !this.$store.state.session"> Ultima puja: ${{this.article.dataBid.value}} </p>
   <div v-if="timeOfEnd!= 0">Tiempo para que termine: {{ timeOfEnd }}</div>
   <div v-if="this.$store.state.session && article.started==1 && article.finished==0">
+
+  <error v-if="typeof error == 'string'" :error="error"></error>
   <button class="btn btn-outline-success" :disabled="this.article.dataBid && this.article.dataBid.dataUser && this.$store.state.session && this.article.dataBid.dataUser.uuid==this.$store.state.session.uuid" v-if=" this.article.dataBid && this.article.dataBid.value" @click="postBid((article.dataBid.value + article.minStepValue  ))">pujar ${{ (article.dataBid.value + article.minStepValue  )  }}</button>
   <button  class="btn btn-outline-success" v-else @click="postBid(( article.minValue ))">pujar ${{ (article.minValue )  }}</button>
  </div>
@@ -38,6 +40,7 @@
 <script>
 import { get, post } from '@/fetch.js'
 import { socket } from '@/socket.js'
+import Error from '@/components/inputError'
 export default {
   name: 'ArticleView',
   data () {
@@ -46,8 +49,12 @@ export default {
       error: '',
       users: [],
       timeOfEnd: 0,
-      auction: {}
+      auction: {},
+      errorBid: ''
     }
+  },
+  components: {
+    Error
   },
   methods: {
     time (date) {
@@ -58,8 +65,10 @@ export default {
     async getArticle (uuid) {
       this.$store.state.isLoading = true
       const json = await get('/article/' + uuid, 'GET', this.$store.state.token)
+      this.error = json.error
       if (json.error) {
-        this.error = json.error
+        alert(this.error)
+        this.$router.go(-1)
       } else {
         this.article = json.content
         if (this.$route.name === 'myArticleB') {
@@ -73,7 +82,7 @@ export default {
       const body = JSON.stringify({ value, article: this.article.uuid })
       const json = await post('/bidCreate', 'POST', this.$store.state.token, body)
       if (json.error) {
-        this.error = json.error
+        this.errorBid = json.error
       } else {
         console.log('hola')
       }
@@ -120,8 +129,10 @@ export default {
     async getAuction () {
       this.$store.state.isLoading = true
       const json = await get('/auction/' + this.article.auction, 'GET', this.$store.state.token)
+      this.error = json.error
       if (json.error) {
-        this.error = json.error
+        alert(this.error)
+        this.$router.go(-1)
       } else {
         this.auction = json.content
       }
