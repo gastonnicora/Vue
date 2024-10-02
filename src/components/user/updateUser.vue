@@ -4,18 +4,18 @@
   <form @submit.prevent="update" >
     <label >Nombre: </label> <br/>
     <input type="text" v-model="user.name" required />
-    <error  v-if="error.name" >{{error.name}}</error>
+    <error  v-if="error.name" :error="error.name"></error>
     <br/>
     <label >Apellido: </label> <br/>
     <input type="text" v-model="user.lastName" required />
-    <error  v-if="error.lastName" >{{error.lastName}}</error>
+    <error  v-if="error.lastName" :error="error.lastName"></error>
     <br/>
     <label for="pass">Nacimiento: </label> <br/>
     <input type="date" v-model="birthdate" @change="date()" name="birthdate" id="birthdate"  required />
-    <error  v-if="error.birthdate" >{{error.birthdate}}</error>
+    <error  v-if="error.birthdate" :error="error.birthdate"></error>
     <br/> <br>
     <div class="error" v-if="save" style="background-color:#5f5" >El perfil se edito correctamente</div>
-    <error v-if="typeof error == 'string'" >{{error}}</error>
+    <error v-if="typeof error == 'string'" :error="error"></error>
     <button class=" btn btn-outline-danger" @click="cancel()" type="button" style="margin: 1rem;">
         Cancelar
       </button>

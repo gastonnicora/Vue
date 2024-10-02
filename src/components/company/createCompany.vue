@@ -5,11 +5,11 @@
   <form @submit.prevent="createCompany()" id="form">
     <label >Nombre: </label> <br/>
     <input v-model="this.company.name" maxlength="255" >
-    <error v-if="error && error.name">{{ this.error.name }}</error>
+    <error v-if="error && error.name" :error="this.error.name"></error>
     <br>
     <label >Dirección: </label> <br/>
     <input v-model="this.company.address" maxlength="255" >
-    <error v-if="error && error.address">{{ this.error.address}}</error>
+    <error v-if="error && error.address" :error="this.error.address"></error>
     <br>
     <error  v-if="typeof error == 'string'" :error="error"></error>
     <div v-if="this.$route.name === 'updateCompany'"  >

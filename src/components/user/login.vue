@@ -4,11 +4,11 @@
   <form @submit.prevent="iniciarSesion" id="form">
     <label for="email">Email: </label> <br/>
     <input type="email" v-model="email" id="email" name="email" required />
-    <error v-if="error && error.email">{{ error.email }}</error>
+    <error v-if="error && error.email" :error="error.email"></error>
     <br />
     <label for="pass">Contraseña: </label> <br/>
     <input type="password" v-model="password" required id="pass" name="pass" />
-    <error v-if="error && error.password">{{ error.password }}</error>
+    <error v-if="error && error.password" :error=" error.password "></error>
     <br />
     <error v-if="typeof error == 'string'" :error="error"></error>
     <button class="btn btn-outline-success" type="submit">
@@ -49,6 +49,7 @@ export default {
       const json = await post('/login', 'POST', null, body)
 
       if (json.error) {
+        console.log(json.error)
         this.error = json.error
       } else {
         localStorage.setItem('sesion', JSON.stringify(json.content))

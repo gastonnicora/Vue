@@ -4,18 +4,18 @@
   <form @submit.prevent="update" >
     <label >Antigua contraseña: </label> <br/>
     <input type="password" v-model="body.oldPassword" required />
-    <error  v-if="error.oldPassword" >{{error.oldPassword}}</error>
+    <error  v-if="error.oldPassword" :error="error.oldPassword"></error>
     <br>
     <label >Nueva contraseña: </label> <br/>
     <input type="password" v-model="body.password" required />
-    <error  v-if="error.password" >{{error.password}}</error>
+    <error  v-if="error.password"  :error="error.password"></error>
     <br>
     <label >Repita la contraseña: </label> <br/>
     <input type="password" v-model="body.repetitionPass" required />
-    <div  v-if="error.repetitionPass" >{{error.repetitionPass}}</div>
+    <div  v-if="error.repetitionPass" :error="error.repetitionPass"></div>
     <br>
     <div class="error" v-if="save" style="background-color:#5f5" >Se cambio la contraseña correctamente</div>
-    <error v-if="typeof error == 'string'">{{error}}</error>
+    <error v-if="typeof error == 'string'" :error="error"></error>
     <br>
     <button class=" btn btn-outline-success" type="submit">
       Actualizar

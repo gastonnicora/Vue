@@ -5,19 +5,19 @@
   <form @submit.prevent="createArticle()" id="form">
     <label for="description">Descripción: </label> <br/>
     <textarea id="description" name="description" v-model="this.article.description" style="width: 100%;resize: none;"></textarea>
-    <error  v-if="error && error.description">{{ this.error.description }}</error>
+    <error  v-if="error && error.description" :error="this.error.description"></error>
     <br />
     <label >Base: </label> <br/>
     <input v-model="this.article.minValue" type="number" min="1">
-    <error  v-if="error && error.minValue">{{ this.error.minValue }}</error>
+    <error  v-if="error && error.minValue" :error="this.error.minValue"></error>
     <br />
     <label >Diferencia con la ultima puja: </label> <br/>
     <input v-model="this.article.minStepValue" type="number" min="1">
-    <error  v-if="error && error.minStepValue">{{ this.error.minStepValue }}</error>
+    <error  v-if="error && error.minStepValue" :error="this.error.minStepValue"></error>
     <br />
     <label >Pegue la url de la imagen del articulo: </label> <br/>
     <input v-model="this.article.urlPhoto" maxlength="255" >
-    <error  v-if="error && error.urlPhoto">{{ this.error.urlPhoto }}</error>
+    <error  v-if="error && error.urlPhoto" :error="this.error.urlPhoto"></error>
     <br>
     <label>Vista del articulo</label><br>
     <img v-if="article.urlPhoto===''" src="https://cdn-icons-png.flaticon.com/512/1160/1160358.png" alt="imagen de muestra" style="max-width: 10rem;

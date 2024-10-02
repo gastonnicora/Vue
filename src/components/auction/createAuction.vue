@@ -7,35 +7,35 @@
     <select name="comany" v-model="this.auction.company">
       <option v-for="(company , i) in this.$store.state.session.companies.companies" :key="i"  :value="company.uuid">{{company.name}}</option>
     </select>
-    <error v-if="error && error.company">{{ this.error.company }}</error>
+    <error v-if="error && error.company" :error="this.error.company"></error>
     <br />
     <label for="description">Descripción: </label> <br/>
     <textarea id="description" name="description" v-model="this.auction.description" style="width: 100%;resize: none;"></textarea>
-    <error v-if="error && error.description">{{ this.error.description }}</error>
+    <error v-if="error && error.description" :error="this.error.description"></error>
     <br />
     <label for="dateStart">Fecha de inicio: </label> <br/>
     <input type="date" v-model="auction.date" @change="date()" name="date" id="date">
     <input value="00:00:00" type="time" step="1" v-model="auction.hour" @change="date()">
-    <error v-if="error && error.dateStart">{{ this.error.dateStart }}</error>
+    <error v-if="error && error.dateStart" :error="this.error.dateStart"></error>
     <br />
     <label >Tipo de inicio y finalización de los artículos: </label> <br/>
     <select  v-model="this.auction.type">
       <option value="0">Fecha y hora</option>
       <option value="1">Tiempo después de puja</option>
     </select>
-    <error v-if="error && error.type">{{ this.error.type }}</error>
+    <error v-if="error && error.type" :error="this.error.type"></error>
     <br />
     <div v-if="this.auction.type==1">
       <label >Tiempo en segundo para finalizar subasta de articulo desde ultima puja </label> <br/>
       <input type="number" v-model="this.auction.timeAfterBid" min=10>
-      <error v-if="error && error.timeAfterBid">{{ this.error.timeAfterBid }}</error>
+      <error v-if="error && error.timeAfterBid" :error="this.error.timeAfterBid"></error>
       <br />
     </div>
     <div v-if="this.auction.type==0">
       <label >Fecha de finalización </label> <br/>
       <input type="date" v-model="auction.dateF" @change="date()" name="dateF" id="dateF">
       <input value="00:00:00" type="time" step="1" v-model="auction.hourF" @change="date()">
-      <error v-if="error && error.dateFinish">{{ this.error.dateFinish }}</error>
+      <error v-if="error && error.dateFinish" :error="this.error.dateFinish"></error>
       <br />
     </div>
     <error  v-if="typeof error == 'string'" :error="error"></error>
