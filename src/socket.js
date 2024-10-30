@@ -7,7 +7,7 @@ export const state = reactive({
 
 let URL
 if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-  URL = 'http://localhost:4000'
+  URL = 'http://localhost:4001'
 } else {
   URL = `${location.origin}`
 }
