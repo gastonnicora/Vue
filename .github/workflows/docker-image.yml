@@ -75,7 +75,7 @@ jobs:
           context: .
           file: ./Dockerfile 
           tags: |
-            gastonnicora/remates-vue:${{ env.NEW_VERSION }}
+            gastonnicora/remates-vue:${{ env.SOURCE_NAME }}
             gastonnicora/remates-vue:${{ env.NEW_VERSION }}
 
       - name: Commit version.txt
